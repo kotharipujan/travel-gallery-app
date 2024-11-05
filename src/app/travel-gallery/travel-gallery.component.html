@@ -1,1 +1,17 @@
-<p>travel-gallery works!</p>
+<!-- Simple list of travel destinations -->
+<div *ngIf="destinations.length > 0">
+    <div *ngFor="let destination of destinations">
+      <!-- Display Destination Title -->
+      <h3>{{ destination.title }}</h3>
+      <!-- Display Destination Description -->
+      <p>{{ destination.description }}</p>
+      <!-- Display Destination Image -->
+      <img [src]="'assets/images/' + destination.image" alt="{{ destination.title }}">
+    </div>
+  </div>
+  
+  <!-- Message if no destinations are available -->
+  <div *ngIf="destinations.length === 0">
+    <p>No destinations available.</p>
+  </div>
+  
