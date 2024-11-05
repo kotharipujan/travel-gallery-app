@@ -1,21 +1,31 @@
-<!-- Simple list of travel destinations -->
- <div *ngIf="loading" class="loading-container" >
-    <mat-spinner> </mat-spinner><p>
-        loading....
-    </p>
- </div>
- <div *ngIf="!loading && errorMsg.length>0">
-    <p>{{ errorMsg }}</p>
+<!-- Header for Travel Destination App -->
+<header class="app-header">
+  <h1>Travel Destination App</h1>
+</header>
+
+<!-- Loading Spinner -->
+<div *ngIf="loading" class="loading-container">
+  <mat-spinner></mat-spinner>
+  <p>Loading...</p>
 </div>
+
+<!-- Error Message -->
+<div *ngIf="!loading && errorMsg.length > 0">
+  <p>{{ errorMsg }}</p>
+</div>
+
+<!-- Gallery Container -->
 <div *ngIf="!loading && !errorMsg && destinations.length > 0" class="gallery-container">
-    <div *ngFor="let destination of destinations" class="gallery-card">
-        <img [src]="'assets/images/' + destination.image" alt="{{ destination.title }}" class="gallery-image">      <div class="gallery-content">
-        <h3 class="gallery-title">{{ destination.title }}</h3>
-        <p class="gallery-description">{{ destination.description }}</p>
-      </div>
+  <div *ngFor="let destination of destinations" class="gallery-card">
+    <img [src]="'assets/images/' + destination.image" alt="{{ destination.title }}" class="gallery-image">
+    <div class="gallery-content">
+      <h3 class="gallery-title">{{ destination.title }}</h3>
+      <p class="gallery-description">{{ destination.description }}</p>
     </div>
   </div>
-  
-  <!-- Message if no destinations are available -->
-  
-  
+</div>
+
+<!-- Message if no destinations are available -->
+<div *ngIf="!loading && !errorMsg && destinations.length === 0" class="no-destinations-message">
+  <p>No travel destinations available at the moment. Please check back later.</p>
+</div>
