@@ -13,25 +13,44 @@ The gallery displays images, titles, and descriptions of travel destinations, wi
 - **Modern Gallery Layout**: Displays travel destinations in a gallery format using CSS Grid for responsiveness and hover animations for user interaction.
 - **Hosted on AWS Amplify**: Hosted on AWS Amplify with both production and development environments.
 
-## Development server
+## Development Server
 
-Run `ng serve` for a development server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run the development server locally, use the following steps:
 
-## Code scaffolding
+1. **Install Dependencies**: Make sure you have all the project dependencies installed by running:
+   ```bash
+   npm install
+   ```
+
+2. **Run the Development Server**:
+   ```bash
+   ng serve
+   ```
+
+3. **Access the Application**: Navigate to `http://localhost:4200/` in your web browser. The application will automatically reload if you change any of the source files.
+
+## Building the Project
+
+To build the project, follow these steps:
+
+1. **Run Build Command**:
+   ```bash
+   ng build --configuration=production
+   ```
+
+   The build artifacts will be stored in the `dist/` directory.
+
+2. **Running the Production Build Locally**:
+   - You can use a tool like `http-server` to serve the built files:
+     ```bash
+     npx http-server dist/travel-gallery
+     ```
+   - Open the given URL in your browser (usually `http://localhost:8080/`) to see the production version of your application.
+
+## Code Scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Project Setup and Architecture
 
@@ -56,6 +75,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ### Angular Service for Data Fetching
 - **GetTravelDestinationService**: An Angular service (`get-travel-destination.service.ts`) that uses the `HttpClient` to make GET requests to the AWS API Gateway.
 - **Usage**: The service is injected into the `TravelGalleryComponent` to fetch travel destination data when the component initializes (`ngOnInit`).
+- **Api URL**: [Apirur](https://y4x53fu036.execute-api.us-east-2.amazonaws.com/Prod)
 
 ### Angular Material Integration
 - **MatProgressSpinner**: Used to show a loading spinner while travel destinations are being fetched from the API.
@@ -71,10 +91,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Hosting on AWS Amplify
 - **Two Versions Hosted**: The application is hosted on AWS Amplify with two branches:
-  - **Production**: Reflects the stable version of the app.
-  - **Development**: Used to test new features and updates.
+  - **Production**: Reflects the stable version of the app: [Production URL](https://production-brain.d1sk4l7wcz31rq.amplifyapp.com/).
+  - **Development**: Used to test new features and updates: [Test Branch URL](https://test-branch.d1sk4l7wcz31rq.amplifyapp.com/).
 - **AWS Setup**:
   - Use AWS Amplify to connect to your Git repository and create hosting environments.
+  - Push changes to the appropriate branch to trigger a new deployment on Amplify.
 
 ## Deployment Instructions
 - **Push Code to Git Repository**: Ensure that the code is committed and pushed to a Git repository (e.g., GitHub).
@@ -90,12 +111,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
   ```
 - **Troubleshooting Image Issues**: Make sure the `assets` folder is correctly configured in `angular.json` and that the images are named correctly (case-sensitive).
 
-
-
-## Known Issues
+## Known Fixes
 - **CORS Issue**: If you encounter CORS errors when fetching data from the AWS API Gateway, ensure that the correct CORS headers are configured for the API.
 - **Image Not Loading**: Ensure that the image files are placed correctly under `src/assets/images/` and that the paths match exactly (including case sensitivity).
 
-## Contact and Contributions
-Feel free to contribute to this project by submitting pull requests. For any questions, please open an issue on the GitHub repository.
 

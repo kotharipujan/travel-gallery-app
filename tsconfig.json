@@ -4,6 +4,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "baseUrl": "./", // Root of the project
+    "paths": {
+      "@env/*": ["src/environments/*"] // Define an alias to environments folder
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -24,6 +28,7 @@
       "dom"
     ]
   },
+  "include": ["src/**/*.ts"], 
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
