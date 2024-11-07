@@ -26,7 +26,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              "src/assests/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -43,10 +43,17 @@
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
                 },
+                
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kB",
                   "maximumError": "4kB"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all",
@@ -58,32 +65,33 @@
               "vendorChunk": false
             },
             "development": {
-              "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "aot": false,
-              "vendorChunk": true
+              "vendorChunk": true,
+              "aot": true,
+              "optimization": true,
+              "buildOptimizer": true
             }
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "travel-gallery:build:production"
-            },
-            "development": {
-              "browserTarget": "travel-gallery:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
+"serve": {
+  "builder": "@angular-devkit/build-angular:dev-server",
+  "configurations": {
+    "production": {
+      "buildTarget": "travel-gallery:build:production"
+    },
+    "development": {
+      "buildTarget": "travel-gallery:build:development"
+    }
+  },
+  "defaultConfiguration": "development"
+},
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "travel-gallery:build"
+            "buildTarget": "travel-gallery:build"
           }
         },
         "test": {

@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // Import HttpClient from HttpClientModule
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http'; // Import HttpClient for making HTTP requests
+import { Observable } from 'rxjs'; // Observable is used to handle asynchronous data streams
+import { environment } from '@env/environment';//Import enviroment files from @env 
 
 @Injectable({
-  providedIn: 'root' // This makes the service available throughout the app
+  providedIn: 'root' 
 })
 export class GetTravelDestinationService {
-  private apiUrl = 'https://y4x53fu036.execute-api.us-east-2.amazonaws.com/Prod';
+  // URL for the API endpoint that provides travel destination data
+  private apiUrl: string = environment.apiUrl
 
-  constructor(private http: HttpClient) {} // Inject HttpClient here
+  // Injecting HttpClient to be able to perform HTTP requests
+  constructor(private http: HttpClient) {}
 
+  // Method to fetch travel destinations from the API
+  // It returns an Observable of any type 
   getTravelDestinations(): Observable<any> {
-    return this.http.get<any>(this.apiUrl); // Make GET request
+    return this.http.get<any>(this.apiUrl); // Makes a GET request to the API and returns an Observable
   }
 }
